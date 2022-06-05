@@ -1,14 +1,22 @@
 package uz.orifjon.trafficroleapp.adapters
 
+import android.content.Context
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import uz.orifjon.trafficroleapp.R
 import uz.orifjon.trafficroleapp.database.Role
+import uz.orifjon.trafficroleapp.database.RoleDatabase
 import uz.orifjon.trafficroleapp.databinding.RecyclerviewItemBinding
 
-class RecyclerViewAdapter(var list: List<Role>, var onDeleteClick: (Role, Int) -> Unit,var onEditClick:(Role,Int)->Unit) :
+class RecyclerViewAdapter(
+    var context: Context,
+    var list: List<Role>,
+    var onDeleteClick: (Role, Int) -> Unit,
+    var onEditClick: (Role, Int) -> Unit,
+    var isLiked: (Role, Int) -> Unit
+) :
     RecyclerView.Adapter<RecyclerViewAdapter.VH>() {
 
     inner class VH(var binding: RecyclerviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -26,7 +34,10 @@ class RecyclerViewAdapter(var list: List<Role>, var onDeleteClick: (Role, Int) -
                 onDeleteClick(role, position)
             }
             binding.btnEdit.setOnClickListener {
-                onEditClick(role,position)
+                onEditClick(role, position)
+            }
+            binding.isLike.setOnClickListener {
+                isLiked(role,position)
             }
         }
     }

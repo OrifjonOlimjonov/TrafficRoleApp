@@ -66,6 +66,7 @@ class AddRoleFragment : Fragment() {
             }
         }
 
+
         return binding.root
     }
       fun getBitmapFromView(view: View): Bitmap? {

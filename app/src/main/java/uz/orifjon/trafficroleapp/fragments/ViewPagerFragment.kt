@@ -32,7 +32,7 @@ class ViewPagerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         list = ArrayList()
         binding = FragmentViewPagerBinding.inflate(inflater)
         list = RoleDatabase.getDatabase(requireContext()).roleDao()
@@ -43,11 +43,7 @@ class ViewPagerFragment : Fragment() {
         } else {
             binding.tvToast.visibility = View.INVISIBLE
         }
-        adapter = RecyclerViewAdapter(list, { role, i ->
-            val bundle = Bundle()
-            bundle.putSerializable("role", role)
-            findNavController().navigate(R.id.editRoleFragment, bundle)
-        }) { role, i ->
+        adapter = RecyclerViewAdapter(requireContext(),list, { role, i ->
             RoleDatabase.getDatabase(requireContext()).roleDao().deleteRole(role)
             list.removeAt(i)
             adapter.notifyItemRemoved(i)
@@ -57,7 +53,21 @@ class ViewPagerFragment : Fragment() {
             } else {
                 binding.tvToast.visibility = View.INVISIBLE
             }
-        }
+        }, { role, i ->
+            val bundle = Bundle()
+            bundle.putSerializable("role", role)
+            findNavController().navigate(R.id.editRoleFragment, bundle)
+            RoleDatabase.getDatabase(requireContext()).roleDao().editRole(role)
+        },{role, i ->
+            if(role.isLiked == 1){
+                role.isLiked = 0
+            }else{
+                role.isLiked = 1
+            }
+            RoleDatabase.getDatabase(requireContext()).roleDao().editRole(role)
+            list[i] = role
+            adapter.notifyItemChanged(i)
+        })
         binding.rv.adapter = adapter
 
         return binding.root
