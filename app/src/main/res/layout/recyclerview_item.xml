@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:padding="@dimen/_5sdp"
+    app:cardUseCompatPadding="true"
     app:cardCornerRadius="@dimen/_5sdp"
     android:layout_height="@dimen/_100sdp">
 
@@ -49,33 +50,51 @@
 
         <LinearLayout
             android:id="@+id/btnEdit"
-            android:layout_width="@dimen/_75sdp"
+            android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_30sdp"
             android:background="@drawable/border"
             android:orientation="horizontal"
+            android:padding="@dimen/_1sdp"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/btnDelete">
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_10sdp"
                 android:src="@drawable/ic_pencil_1"
-                android:layout_height="wrap_content"/>
+                android:layout_marginRight="@dimen/_4sdp"
+                android:layout_height="@dimen/_10sdp"/>
             <TextView
                 android:layout_width="wrap_content"
+                android:text="O'zgartirish"
+                android:textColor="#005CA1"
+                android:textSize="@dimen/_10ssp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnDelete"
-            android:layout_width="@dimen/_70sdp"
+            android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_30sdp"
             android:background="@drawable/border"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="1"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="@id/isLike" />
+            app:layout_constraintRight_toRightOf="@id/isLike">
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:src="@drawable/ic_bin_1"
+                android:layout_marginRight="@dimen/_4sdp"
+                android:layout_height="@dimen/_10sdp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="O'chirish"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="#005CA1"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
