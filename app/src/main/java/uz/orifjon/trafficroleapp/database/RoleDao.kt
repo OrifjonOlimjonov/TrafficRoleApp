@@ -20,5 +20,8 @@ interface RoleDao {
     @Delete
     fun deleteRole(role: Role)
 
+    @Query("SELECT * FROM role_table WHERE is_liked = 1")
+    fun listIsLiked():List<Role>
+
 
 }

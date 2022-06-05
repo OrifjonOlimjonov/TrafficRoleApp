@@ -2,34 +2,37 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/_5sdp"
     app:cardUseCompatPadding="true"
+    app:cardElevation="@dimen/_5sdp"
     app:cardCornerRadius="@dimen/_5sdp"
     android:layout_height="@dimen/_100sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/_10sdp">
+        android:padding="@dimen/_5sdp">
 
         <ImageView
             android:id="@+id/imgSysmbol"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
-            android:background="@drawable/symbol"
+            android:layout_width="@dimen/_75sdp"
+            android:scaleType="centerInside"
+            android:layout_height="@dimen/_75sdp"
+            tools:background="@drawable/symbol"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvNameSymbol"
-            android:layout_width="@dimen/_150sdp"
+            android:layout_width="@dimen/_145sdp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             android:maxLines="2"
             android:text="Shlagbaumli temir yo'l\nkesishmasi"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_13ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintLeft_toRightOf="@id/imgSysmbol"
@@ -38,20 +41,20 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/isLike"
-            android:layout_width="@dimen/_28sdp"
-            android:layout_height="@dimen/_26sdp"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_20sdp"
             android:background="@drawable/ic_heart__1__1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/tvNameSymbol"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvNameSymbol"
             app:layout_constraintVertical_bias="0"
-            app:layout_constraintHorizontal_bias="1"/>
+            app:layout_constraintHorizontal_bias="0.95"/>
 
         <LinearLayout
             android:id="@+id/btnEdit"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_28sdp"
             android:background="@drawable/border"
             android:orientation="horizontal"
             android:padding="@dimen/_1sdp"
@@ -75,8 +78,8 @@
 
         <LinearLayout
             android:id="@+id/btnDelete"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_28sdp"
             android:background="@drawable/border"
             android:orientation="horizontal"
             android:gravity="center"
