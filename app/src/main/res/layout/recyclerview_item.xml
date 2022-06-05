@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_100sdp"
+    android:paddingLeft="@dimen/_10sdp">
+
+    <ImageView
+        android:id="@+id/imgSysmbol"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:background="@drawable/symbol"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNameSymbol"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content"
+        android:text="Shlagbaumli temir yo'l\nkesishmasi"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintVertical_bias="0.1"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/imgSysmbol"
+        app:layout_constraintTop_toTopOf="@id/imgSysmbol" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/isLike"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_33sdp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvNameSymbol"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintLeft_toRightOf="@id/tvNameSymbol"
+        android:background="@drawable/ic_heart__1__1"/>
+    <LinearLayout
+        android:id="@+id/btnEdit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/isLike"
+        app:layout_constraintHorizontal_bias="1"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:orientation="vertical" />
+</androidx.constraintlayout.widget.ConstraintLayout>
