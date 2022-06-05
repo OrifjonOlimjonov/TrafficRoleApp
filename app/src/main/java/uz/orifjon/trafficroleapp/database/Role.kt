@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "role_table")
 data class Role(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0,
     @ColumnInfo(name = "role_name")
     var roleName:String,
     @ColumnInfo(name = "role_description")
