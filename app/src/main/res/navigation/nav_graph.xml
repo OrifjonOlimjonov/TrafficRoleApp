@@ -15,4 +15,14 @@
         android:name="uz.orifjon.trafficroleapp.fragments.AddRoleFragment"
         android:label="fragment_add_role"
         tools:layout="@layout/fragment_add_role" />
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="uz.orifjon.trafficroleapp.fragments.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
+    <fragment
+        android:id="@+id/likeFragment"
+        android:name="uz.orifjon.trafficroleapp.fragments.LikeFragment"
+        android:label="fragment_like"
+        tools:layout="@layout/fragment_like" />
 </navigation>

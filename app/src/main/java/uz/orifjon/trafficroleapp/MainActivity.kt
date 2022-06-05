@@ -20,14 +20,14 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-//            R.id.home -> {
-//              findNavController(binding.fragmentContainerView).navigate(R.id.homeFragment)
-//                return true
-//            }
-//            R.id.mark -> {
-//                findNavController(binding.fragmentContainerView).navigate(R.id.markFragment)
-//                return true
-//            }
+            R.id.home -> {
+              findNavController(binding.fragmentContainerView).navigate(R.id.mainFragment)
+                return true
+            }
+            R.id.like -> {
+                findNavController(binding.fragmentContainerView).navigate(R.id.likeFragment)
+                return true
+            }
 //            R.id.setting -> {
 //                findNavController(binding.fragmentContainerView).navigate(R.id.settingsFragment)
 //                return true
