@@ -28,14 +28,10 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 findNavController(binding.fragmentContainerView).navigate(R.id.likeFragment)
                 return true
             }
-//            R.id.setting -> {
-//                findNavController(binding.fragmentContainerView).navigate(R.id.settingsFragment)
-//                return true
-//            }
-//            R.id.notification -> {
-//                findNavController(binding.fragmentContainerView).navigate(R.id.notificationFragment)
-//                return true
-//            }
+            R.id.info -> {
+                findNavController(binding.fragmentContainerView).navigate(R.id.infoFragment)
+                return true
+            }
         }
         return false
     }

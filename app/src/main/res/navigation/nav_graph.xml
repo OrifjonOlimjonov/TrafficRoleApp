@@ -25,4 +25,9 @@
         android:name="uz.orifjon.trafficroleapp.fragments.LikeFragment"
         android:label="fragment_like"
         tools:layout="@layout/fragment_like" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="uz.orifjon.trafficroleapp.fragments.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
 </navigation>
