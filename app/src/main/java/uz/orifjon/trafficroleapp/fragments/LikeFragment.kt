@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import uz.orifjon.trafficroleapp.R
 import uz.orifjon.trafficroleapp.adapters.RecyclerViewAdapter
 import uz.orifjon.trafficroleapp.database.Role
 import uz.orifjon.trafficroleapp.database.RoleDatabase
@@ -26,24 +28,54 @@ class LikeFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentLikeBinding
-    private lateinit var list: List<Role>
-    private lateinit var likeAdapter: RecyclerViewAdapter
+    private lateinit var list: ArrayList<Role>
+    private lateinit var adapter: RecyclerViewAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLikeBinding.inflate(inflater)
-//        list = RoleDatabase.getDatabase(requireContext()).roleDao().listIsLiked()
-//
-//        if (list.isNotEmpty()) {
-//            binding.tvToast.visibility = View.INVISIBLE
-//        } else {
-//            binding.tvToast.visibility = View.VISIBLE
-//        }
-//        likeAdapter = RecyclerViewAdapter(list) { role, i ->
-//
-//        }
-//        binding.rv.adapter = likeAdapter
+        list = RoleDatabase.getDatabase(requireContext()).roleDao().listIsLiked() as ArrayList<Role>
+
+        if (list.isNotEmpty()) {
+            binding.tvToast.visibility = View.INVISIBLE
+        } else {
+            binding.tvToast.visibility = View.VISIBLE
+        }
+        adapter = RecyclerViewAdapter(requireContext(),list, { role, i ->
+            RoleDatabase.getDatabase(requireContext()).roleDao().deleteRole(role)
+            list.removeAt(i)
+            adapter.notifyItemRemoved(i)
+            adapter.notifyItemRangeChanged(i, list.size)
+            if (list.isEmpty()) {
+                binding.tvToast.visibility = View.VISIBLE
+            } else {
+                binding.tvToast.visibility = View.INVISIBLE
+            }
+
+        }, { role, i ->
+            val bundle = Bundle()
+            bundle.putSerializable("role", role)
+            findNavController().navigate(R.id.editRoleFragment, bundle)
+            RoleDatabase.getDatabase(requireContext()).roleDao().editRole(role)
+        },{role, i ->
+            if(role.isLiked == 1){
+                role.isLiked = 0
+                list.removeAt(i)
+                adapter.notifyItemRemoved(i)
+                adapter.notifyItemRangeChanged(i,list.size)
+            }else{
+                role.isLiked = 1
+            }
+            RoleDatabase.getDatabase(requireContext()).roleDao().editRole(role)
+
+            if (list.isNotEmpty()) {
+                binding.tvToast.visibility = View.INVISIBLE
+            } else {
+                binding.tvToast.visibility = View.VISIBLE
+            }
+        })
+        binding.rv.adapter = adapter
 
         return binding.root
     }
