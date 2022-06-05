@@ -52,7 +52,6 @@ class LikeFragment : Fragment() {
             } else {
                 binding.tvToast.visibility = View.INVISIBLE
             }
-
         }, { role, i ->
             val bundle = Bundle()
             bundle.putSerializable("role", role)
@@ -74,6 +73,10 @@ class LikeFragment : Fragment() {
             } else {
                 binding.tvToast.visibility = View.VISIBLE
             }
+        },{role, i ->
+            val bundle = Bundle()
+            bundle.putSerializable("role",role)
+            findNavController().navigate(R.id.itemInfoFragment,bundle)
         })
         binding.rv.adapter = adapter
 

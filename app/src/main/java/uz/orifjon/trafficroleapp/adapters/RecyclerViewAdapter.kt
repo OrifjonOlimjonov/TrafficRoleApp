@@ -15,7 +15,8 @@ class RecyclerViewAdapter(
     var list: List<Role>,
     var onDeleteClick: (Role, Int) -> Unit,
     var onEditClick: (Role, Int) -> Unit,
-    var isLiked: (Role, Int) -> Unit
+    var isLiked: (Role, Int) -> Unit,
+    var itemClick: (Role, Int) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerViewAdapter.VH>() {
 
@@ -38,6 +39,9 @@ class RecyclerViewAdapter(
             }
             binding.isLike.setOnClickListener {
                 isLiked(role,position)
+            }
+            itemView.setOnClickListener {
+                itemClick(role,position)
             }
         }
     }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -18,6 +19,8 @@ import uz.orifjon.trafficroleapp.database.Role
 import uz.orifjon.trafficroleapp.database.RoleDatabase
 import uz.orifjon.trafficroleapp.databinding.FragmentAddRoleBinding
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 import java.io.OutputStream
 
 
@@ -36,7 +39,9 @@ class AddRoleFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
-
+        binding.imageSymbol.setOnClickListener {
+             takePhotoResult.launch("image/*")
+        }
         spinnerAdapter = SpinnerAdapter()
         binding.spinner.adapter = spinnerAdapter
 
@@ -77,6 +82,15 @@ class AddRoleFragment : Fragment() {
         return bitmap
     }
 
+    private val takePhotoResult = registerForActivityResult(ActivityResultContracts.GetContent()){uri->
+        if(uri ==null) return@registerForActivityResult
+        binding.imageSymbol.setImageURI(uri)
+        val openInputStream = requireActivity().contentResolver?.openInputStream(uri)
+        val file = File(requireActivity().filesDir,"face.png")
+        val fileOutputStream = FileOutputStream(file)
+        openInputStream?.copyTo(fileOutputStream)
+        openInputStream?.close()
+    }
     override fun onDestroyView() {
         super.onDestroyView()
 

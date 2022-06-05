@@ -67,6 +67,10 @@ class ViewPagerFragment : Fragment() {
             RoleDatabase.getDatabase(requireContext()).roleDao().editRole(role)
             list[i] = role
             adapter.notifyItemChanged(i)
+        },{role, i ->
+            val bundle = Bundle()
+            bundle.putSerializable("role",role)
+            findNavController().navigate(R.id.itemInfoFragment,bundle)
         })
         binding.rv.adapter = adapter
 
