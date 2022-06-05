@@ -15,4 +15,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="StyleSplash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+
 </resources>

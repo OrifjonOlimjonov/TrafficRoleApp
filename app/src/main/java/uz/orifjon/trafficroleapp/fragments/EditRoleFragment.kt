@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.rotationMatrix
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,6 +19,8 @@ import uz.orifjon.trafficroleapp.database.Role
 import uz.orifjon.trafficroleapp.database.RoleDatabase
 import uz.orifjon.trafficroleapp.databinding.FragmentEditRoleBinding
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -64,6 +67,9 @@ class EditRoleFragment : Fragment() {
                 role.bitmap.size
             )
         )
+        binding.imageSymbol.setOnClickListener {
+            takePhotoResult.launch("image/*")
+        }
         for (i in 0 until list.size) {
             if (list[i] == role.typeRole) {
                 position = i
@@ -108,6 +114,15 @@ class EditRoleFragment : Fragment() {
         val canvas = Canvas(bitmap)
         view.draw(canvas)
         return bitmap
+    }
+    private val takePhotoResult = registerForActivityResult(ActivityResultContracts.GetContent()){ uri->
+        if(uri ==null) return@registerForActivityResult
+        binding.imageSymbol.setImageURI(uri)
+        val openInputStream = requireActivity().contentResolver?.openInputStream(uri)
+        val file = File(requireActivity().filesDir,"face.png")
+        val fileOutputStream = FileOutputStream(file)
+        openInputStream?.copyTo(fileOutputStream)
+        openInputStream?.close()
     }
 
     override fun onDestroyView() {

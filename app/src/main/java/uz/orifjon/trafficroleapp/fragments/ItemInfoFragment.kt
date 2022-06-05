@@ -32,7 +32,9 @@ class ItemInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentItemInfoBinding.inflate(inflater)
+
         val role = arguments?.getSerializable("role") as Role
+        binding.toolbar.title = role.roleName
         bottomNavigation = requireActivity().findViewById(R.id.bottomnavigation)
         bottomNavigation.visibility = View.GONE
         binding.tvTheme.text = role.roleName
@@ -49,6 +51,11 @@ class ItemInfoFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        bottomNavigation.visibility = View.VISIBLE
     }
 
     companion object {
