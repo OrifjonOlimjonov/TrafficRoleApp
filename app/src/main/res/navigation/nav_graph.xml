@@ -30,4 +30,9 @@
         android:name="uz.orifjon.trafficroleapp.fragments.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/editRoleFragment"
+        android:name="uz.orifjon.trafficroleapp.fragments.EditRoleFragment"
+        android:label="fragment_edit_role"
+        tools:layout="@layout/fragment_edit_role" />
 </navigation>

@@ -3,6 +3,7 @@ package uz.orifjon.trafficroleapp.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "role_table")
 data class Role(
@@ -17,4 +18,4 @@ data class Role(
     @ColumnInfo(name = "is_liked")
     var isLiked:Int,
     var bitmap:ByteArray
-)
+):Serializable

@@ -5,15 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import uz.orifjon.trafficroleapp.adapters.RecyclerViewAdapter
-import uz.orifjon.trafficroleapp.database.Role
-import uz.orifjon.trafficroleapp.database.RoleDatabase
-import uz.orifjon.trafficroleapp.databinding.FragmentLikeBinding
+import uz.orifjon.trafficroleapp.R
+import uz.orifjon.trafficroleapp.databinding.FragmentEditRoleBinding
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class LikeFragment : Fragment() {
+class EditRoleFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -24,26 +22,13 @@ class LikeFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
-    private lateinit var binding: FragmentLikeBinding
-    private lateinit var list: List<Role>
-    private lateinit var likeAdapter: RecyclerViewAdapter
+    private lateinit var binding:FragmentEditRoleBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentLikeBinding.inflate(inflater)
-//        list = RoleDatabase.getDatabase(requireContext()).roleDao().listIsLiked()
-//
-//        if (list.isNotEmpty()) {
-//            binding.tvToast.visibility = View.INVISIBLE
-//        } else {
-//            binding.tvToast.visibility = View.VISIBLE
-//        }
-//        likeAdapter = RecyclerViewAdapter(list) { role, i ->
-//
-//        }
-//        binding.rv.adapter = likeAdapter
+        binding = FragmentEditRoleBinding.inflate(inflater)
+
 
         return binding.root
     }
@@ -51,7 +36,7 @@ class LikeFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            LikeFragment().apply {
+            EditRoleFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
