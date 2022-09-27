@@ -8,8 +8,8 @@ import com.google.android.material.navigation.NavigationBarView
 import kotlinx.android.synthetic.main.activity_main.*
 import uz.orifjon.trafficroleapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener{
-    private lateinit var binding:ActivityMainBinding
+class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_TrafficRoleApp)
@@ -17,19 +17,23 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         setContentView(binding.root)
         binding.bottomnavigation.setOnItemSelectedListener(this)
 
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.home -> {
-              findNavController(binding.fragmentContainerView).navigate(R.id.mainFragment)
+                findNavController(binding.fragmentContainerView).popBackStack()
+                findNavController(binding.fragmentContainerView).navigate(R.id.mainFragment)
                 return true
             }
             R.id.like -> {
+                findNavController(binding.fragmentContainerView).popBackStack()
                 findNavController(binding.fragmentContainerView).navigate(R.id.likeFragment)
                 return true
             }
             R.id.info -> {
+                findNavController(binding.fragmentContainerView).popBackStack()
                 findNavController(binding.fragmentContainerView).navigate(R.id.infoFragment)
                 return true
             }
